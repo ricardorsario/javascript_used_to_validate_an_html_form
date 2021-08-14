@@ -8,15 +8,15 @@
 
     <script
       defer
-      src="/node_modules/@fortawesome/fontawesome-free/js/brands.js"
+      src="../node_modules/@fortawesome/fontawesome-free/js/brands.js"
     ></script>
     <script
       defer
-      src="/node_modules/@fortawesome/fontawesome-free/js/solid.js"
+      src="../node_modules/@fortawesome/fontawesome-free/js/solid.js"
     ></script>
     <script
       defer
-      src="/node_modules/@fortawesome/fontawesome-free/js/fontawesome.js"
+      src="../node_modules/@fortawesome/fontawesome-free/js/fontawesome.js"
     ></script>
 
     <link
@@ -31,32 +31,34 @@
 
   <body>
     <!--Header with title-->
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-light mt-4">
       <div
         class="container col-8 bg-light border border-1 rounded-top pt-1 pb-1"
       >
-        <a class="navbar-brand fw-bold" href="#">Payment form example</a>
+        <a class="navbar-brand fw-bold" href="#">Pay me what you owe me 💰</a>
       </div>
     </nav>
     <!--Empieza la FORM-->
-    <div class="container container col-8 border-start border-end">
-      <form class="row g-3">
+    <div
+      class="container rounded-bottom container col-8 border-start border-bottom border-end p-0"
+    >
+      <form class="row g-3 ms-0 me-0">
         <!--DISCLAIMER ROJO-->
-        <div id="missing" class="col-12">
+        <div id="missing" style="display: none">
           <div class="alert alert-danger" role="alert">
-            Some fields are missing, unfortunate!
+            Don't act like you forgot!
           </div>
         </div>
 
         <!--DISCLAIMER VERDE-->
-        <div id="wellDone" class="col-12">
+        <div id="wellDone" style="display: none">
           <div class="alert alert-success" role="alert">
-            Everything is A+!
+            Everything is A+! Like bra, bra, bra
           </div>
         </div>
 
         <div class="col-md-5">
-          <label for="inputCard" class="form-label">Card #</label>
+          <label for="inputCard" class="form-label">Card</label>
           <input
             type="text"
             class="form-control"
@@ -65,7 +67,7 @@
           />
         </div>
         <div class="col-md-3">
-          <label for="inputCVC" class="form-label">CVC #</label>
+          <label for="inputCVC" class="form-label">CVC</label>
           <input
             type="text"
             class="form-control"
@@ -99,15 +101,19 @@
           <label for="inputCity" class="form-label">City</label>
           <input type="text" class="form-control" id="inputCity" />
         </div>
+
+        <!--STATE S-->
         <div class="col-md-4">
           <label for="inputState" class="form-label">State</label>
           <select id="inputState" class="form-select">
             <option selected value="0">Pick a state</option>
             <option value="1">New York</option>
-            <option value="2">Miami</option>
-            <option value="3">Guatemala</option>
+            <option value="2">California</option>
+            <option value="3">Florida</option>
           </select>
         </div>
+        <!--STATE E-->
+
         <div class="col-md-2">
           <label for="inputZip" class="form-label">Postal Code</label>
           <input type="text" class="form-control" id="inputZip" />
@@ -117,77 +123,76 @@
             >We accept:</label
           >
 
-          <button class="btn btn-secondary" type="button">
-            <div class="form-check form-check-inline">
+          <!--PAY S-->
+          <div class="d-flex text-primary">
+            <div class="form-check">
               <input
-                class="form-check-input"
                 type="radio"
-                id="inlineCheckbox1"
-                value="option1"
+                id="contactChoice1"
+                name="radio-stacked"
+                value="Visa"
+                class="form-check-input"
               />
-              <label class="form-check-label" for="inlineCheckbox1"
-                ><i class="fab fa-cc-mastercard"></i
-              ></label>
+              <i class="fab fa-cc-visa m-auto" aria-hidden="true"></i>
             </div>
-            <div class="form-check form-check-inline">
+            <div class="form-check ms-3">
               <input
-                class="form-check-input"
                 type="radio"
-                id="inlineCheckbox2"
-                value="option2"
+                id="contactChoice2"
+                name="radio-stacked"
+                value="MasterCard"
+                class="form-check-input"
               />
-              <label class="form-check-label" for="inlineCheckbox2"
-                ><i class="fab fa-cc-visa"></i
-              ></label>
+              <i class="fab fa-cc-mastercard m-auto" aria-hidden="true"></i>
             </div>
-            <div class="form-check form-check-inline">
+            <div class="form-check ms-3">
               <input
-                class="form-check-input"
                 type="radio"
-                id="inlineCheckbox2"
-                value="option2"
+                id="contactChoice3"
+                name="radio-stacked"
+                value="Other"
+                class="form-check-input"
               />
-              <label class="form-check-label" for="inlineCheckbox2"
-                ><i class="fab fa-cc-diners-club"></i
-              ></label>
+              <i class="fab fa-paypal m-auto" aria-hidden="true"></i>
             </div>
-            <div class="form-check form-check-inline">
+            <div class="form-check ms-3">
               <input
-                class="form-check-input"
                 type="radio"
-                id="inlineCheckbox2"
-                value="option2"
+                id="contactChoice4"
+                name="radio-stacked"
+                value="Paypal"
+                class="form-check-input"
               />
-              <label class="form-check-label" for="inlineCheckbox2"
-                ><i class="fab fa-cc-amex"></i
-              ></label>
+              <i class="fab fa-cc-diners-club m-auto" aria-hidden="true"></i>
             </div>
-          </button>
+          </div>
+          <!--PAY E-->
         </div>
         <div class="col-6 offset-2">
           <label for="inputMessage" class="form-label">Message</label>
           <textarea
             name="mensaje"
             class="form-control"
-            id="inputZip"
+            style="max-height: 7rem"
+            id="inputZipSecond"
           ></textarea>
-          <div id="emailHelp" class="form-text pb-4">Add any notes here.</div>
+          <div id="emailHelp" class="form-text">Add any notes here.</div>
         </div>
-        <input type="reset" class="btn btn-secondary p-2 mr-2" value="Cancel" />
-        <input
-          id="sendForm"
-          type="submit"
-          class="btn btn-primary p-2 mr-2"
-          value="Send"
-        />
+        <!-- Buttons ending -->
+        <div
+          class="col-12 bg-light p-0 border-top p-2 d-flex justify-content-end"
+        >
+          <input type="reset" class="btn btn-secondary" value="Cancel" />
+          <input
+            id="sendForm"
+            type="submit"
+            class="btn btn-primary ms-2"
+            value="Send"
+          />
+        </div>
+        <!-- Buttons ending -->
       </form>
     </div>
-    <!--Footer with 2 buttons-->
-    <nav class="navbar navbar-expand-lg navbar-light p-0">
-      <div
-        class="container col-8 bg-light border border-1 rounded-bottom justify-content-md-end pt-3 pb-3"
-      ></div>
-    </nav>
 
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"

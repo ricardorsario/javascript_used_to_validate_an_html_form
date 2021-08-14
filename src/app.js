@@ -14,6 +14,11 @@ const POSTALCODE = document.querySelector("#inputZip");
 
 const FORM = document.querySelector("form");
 
+const cardType1 = document.querySelector("#contactChoice1");
+const cardType2 = document.querySelector("#contactChoice2");
+const cardType3 = document.querySelector("#contactChoice3");
+const cardType4 = document.querySelector("#contactChoice4");
+
 window.onload = () => {
   FORM.addEventListener("submit", event => {
     event.preventDefault();
@@ -25,7 +30,37 @@ window.onload = () => {
     checkLastNameSubmit();
     checkCitySubmit();
     checkStateSubmit();
+    checkWellDone();
+    checkVisaSubmit();
   });
+};
+
+//CHEQUEO DEL PAGO VISA
+const checkVisaSubmit = () => {
+  if (
+    cardType1.checked == true ||
+    cardType2.checked == true ||
+    cardType3.checked == true ||
+    cardType4.checked == true
+  ) {
+    cardType1.classList.remove("is-invalid");
+    cardType1.classList.add("is-valid");
+    cardType2.classList.remove("is-invalid");
+    cardType2.classList.add("is-valid");
+    cardType3.classList.remove("is-invalid");
+    cardType3.classList.add("is-valid");
+    cardType4.classList.remove("is-invalid");
+    cardType4.classList.add("is-valid");
+  } else {
+    cardType1.classList.remove("is-valid");
+    cardType1.classList.add("is-invalid");
+    cardType2.classList.remove("is-valid");
+    cardType2.classList.add("is-invalid");
+    cardType3.classList.remove("is-valid");
+    cardType3.classList.add("is-invalid");
+    cardType4.classList.remove("is-valid");
+    cardType4.classList.add("is-invalid");
+  }
 };
 
 //CHEQUEO DEL CVC
@@ -52,7 +87,7 @@ const checkAmountsubmit = () => {
 
 //CHEQUEO DEL POSTAL CODE
 const checkPostsubmit = () => {
-  if (isNumber(POSTALCODE.value) && POSTALCODE.value.length == 4) {
+  if (isNumber(POSTALCODE.value) && POSTALCODE.value.length == 5) {
     POSTALCODE.classList.remove("is-invalid");
     POSTALCODE.classList.add("is-valid");
   } else {
@@ -111,7 +146,6 @@ const checkCitySubmit = () => {
 
 //CHEQUEO DE STATE
 const checkStateSubmit = () => {
-  console.log(STATE.value);
   if (STATE.value !== "0") {
     STATE.classList.remove("is-invalid");
     STATE.classList.add("is-valid");
@@ -125,12 +159,27 @@ const checkStateSubmit = () => {
 const MISSING = document.getElementById("missing");
 const WELLDONE = document.getElementById("wellDone");
 
-const ALLINPUTS = document.querySelectorAll("input");
+//const ALLINPUTS = document.querySelectorAll("input");
 
-const checkWellDone = () => {};
+const checkWellDone = () => {
+  if (
+    CARD.classList[1] == "is-valid" &&
+    CVC.classList[1] == "is-valid" &&
+    AMOUNT.classList[1] == "is-valid" &&
+    FIRSTNAME.classList[1] == "is-valid" &&
+    LASTNAME.classList[1] == "is-valid" &&
+    CITY.classList[1] == "is-valid" &&
+    STATE.classList[1] == "is-valid" &&
+    POSTALCODE.classList[1] == "is-valid"
+  ) {
+    showWellDone();
+  } else {
+    showMissing();
+  }
+};
 
 let showWellDone = function() {
-  WLLDONE.style.display = "block";
+  WELLDONE.style.display = "block";
   MISSING.style.display = "none";
 };
 
